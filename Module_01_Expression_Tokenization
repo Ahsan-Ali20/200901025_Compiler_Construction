@@ -1,0 +1,9 @@
+import re #RegEx can be used to determine whether a string includes a given search pattern or not.
+print("======================================================================")
+print("              200901025_Muhammad_Ahsan_Ali_MODULE_01                    ")
+print("======================================================================\n")
+Expression_Tokenization = input("Input a Expression for Tokenization: ")
+print("----------------------------------------------------------------------\n")
+Expression = re.split('\s+|(\w)',Expression_Tokenization) #Split the source string according to where the pattern appears, and then return a list with the resulting substrings.
+print ("Tokens of entered Expression are: ",list(filter(None, Expression)))
+print("======================================================================\n")
