@@ -1,0 +1,8 @@
+import ast #import the Python AST package, which enables Python programmes to interpret Abstract Syntax Grammar (AST) tree data.
+#Creating AST
+print("======================================================================")
+print("              200901025_Muhammad_Ahsan_Ali_MODULE_02                    ")
+print("======================================================================\n")
+Expression_For_Syntax_Tree = ast.parse("a + ( b * c )") #the ast.parse() function splits the source code into tokens.
+print(ast.dump(Expression_For_Syntax_Tree)) #ast.dump to print the Syntax Tree using the expression
+print("\n======================================================================\n")
