@@ -1,0 +1,45 @@
+import xml.etree.ElementTree as ET
+import openpyxl
+
+# parse the XML file
+tree = ET.parse("C:/Users/Ahsan Ali Awan/Desktop/compiler.xml")
+
+# get the root element of the XML document
+root = tree.getroot()
+
+# create a list to store the extracted data
+data = []
+
+# iterate over the book elements in the XML file
+for book in root.findall("book"):
+    # create a dictionary to store the data for each book
+    BookData = {}
+    # extract the data for each book
+    BookData["Book_ID"] = book.get("ID")
+    BookData["Author_Name"] = book.find("Author").text
+    BookData["Title"] = book.find("Title").text
+    BookData["Genre"] = book.find("Genre").text
+    BookData["Price"] = book.find("Price").text
+    BookData["Publish_Date"] = book.find("Publish_Date").text
+    BookData["Description"] = book.find("Description").text
+    # add the book data to the list
+    data.append(BookData)
+
+
+# create a new Excel file
+wb = openpyxl.Workbook()
+
+# create a sheet in the Excel file
+sheet = wb.active
+# add the column headings to the sheet
+sheet.append(["Book_ID", "Author_Name", "Title", "Genre", "Price", "Publish_Date", "Description"])
+
+# add the extracted data to the sheet
+for book in data:
+    sheet.append([book["Book_ID"], book["Author_Name"], book["Title"], book["Genre"], book["Price"], book["Publish_Date"], book["Description"]])
+
+# save the Excel file
+wb.save("200901025_CCAssignment_03.xlsx")
+print("=======================================================")
+print("The XML File converted to Excel File Successfully!!")
+print("=======================================================")
